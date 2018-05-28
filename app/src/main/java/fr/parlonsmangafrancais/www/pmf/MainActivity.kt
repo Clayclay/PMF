@@ -1,14 +1,16 @@
 package fr.parlonsmangafrancais.www.pmf
 
+import android.annotation.SuppressLint
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
 import kotlinx.android.synthetic.main.activity_main.*
-import java.net.URL
+
 
 
 class MainActivity : AppCompatActivity()  {
 
+    @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,14 +24,12 @@ class MainActivity : AppCompatActivity()  {
 val manga1 = Manga("Marie")
         manga1.resume = "resume ici"
         manga1.imageUrl
-        manga1.dateFutur
+        //manga1.dateFutur
         manga1.note
 
-        
 
-        GlideApp.with(this)
-                .load(URL)
-                .into(image)
+
+
 
 mangaName.setText(manga1.name)
 

@@ -4,14 +4,28 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+
+
+
+
+class MainActivity : AppCompatActivity()  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Example of a call to a native method
-        sample_text.text = stringFromJNI()
+
+
+        // Instead of findViewById<TextView>(R.id.textView)
+        textView.setText("Hello,Marie!")
+
+//step 2
+val manga1 = Manga("Marie")
+manga1.resume = "resume ici"
+
+
+mangaName.setText(manga1.name)
+
     }
 
     /**
@@ -20,6 +34,8 @@ class MainActivity : AppCompatActivity() {
      */
     external fun stringFromJNI(): String
 
+
+
     companion object {
 
         // Used to load the 'native-lib' library on application startup.
@@ -27,4 +43,9 @@ class MainActivity : AppCompatActivity() {
             System.loadLibrary("native-lib")
         }
     }
+
+
+
+
+
 }

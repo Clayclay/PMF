@@ -21,8 +21,10 @@ class MainActivity : AppCompatActivity()  {
 
 //step 2
 val manga1 = Manga("Marie")
-manga1.resume = "resume ici"
-
+        manga1.resume = "resume ici"
+        manga1.imageManga
+        manga1.dateFutur
+        manga1.note
 
 mangaName.setText(manga1.name)
 

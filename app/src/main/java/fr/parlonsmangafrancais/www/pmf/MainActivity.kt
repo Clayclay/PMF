@@ -2,10 +2,9 @@ package fr.parlonsmangafrancais.www.pmf
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+
 import kotlinx.android.synthetic.main.activity_main.*
-
-
-
+import java.net.URL
 
 
 class MainActivity : AppCompatActivity()  {
@@ -22,9 +21,15 @@ class MainActivity : AppCompatActivity()  {
 //step 2
 val manga1 = Manga("Marie")
         manga1.resume = "resume ici"
-        manga1.imageManga
+        manga1.imageUrl
         manga1.dateFutur
         manga1.note
+
+        
+
+        GlideApp.with(this)
+                .load(URL)
+                .into(image)
 
 mangaName.setText(manga1.name)
 

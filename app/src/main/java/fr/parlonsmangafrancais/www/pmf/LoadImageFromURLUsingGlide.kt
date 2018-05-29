@@ -13,7 +13,9 @@ class LoadImageFromURLUsingGlide : AppCompatActivity() {
     @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        setContentView(R.layout.manga_image)
+
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
 
         val imageView = ImageView(this)

@@ -2,11 +2,12 @@ package fr.parlonsmangafrancais.www.pmf
 
 import android.annotation.SuppressLint
 import android.content.Intent
+
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
+
 import android.widget.Toast
+
 
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         textView.setText("Hello,Marie!")
 
 //step 2
-        val manga1 = Manga("Marie")
+        val manga1 = Manga("manga nom")
         manga1.resume = "resume ici"
         manga1.imageUrl
         //manga1.dateFutur
@@ -38,11 +39,21 @@ class MainActivity : AppCompatActivity() {
 
 //step 3 button test
 
-        var button_send = findViewById(R.id.button) as Button
+
+        button1.setOnClickListener {
 
 
-        button_send.setOnClickListener {}
-        Toast.makeText(this@MainActivity, "You clicked me.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@MainActivity, "You clicked me.", Toast.LENGTH_SHORT).show()
+
+
+            val intent = Intent( this ,LoadImageFromURLUsingGlide::class.java)
+            startActivity(intent);
+
+
+
+        }
+
+
     }
 
     /**

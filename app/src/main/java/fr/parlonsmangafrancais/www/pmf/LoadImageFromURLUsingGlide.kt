@@ -20,22 +20,6 @@ class LoadImageFromURLUsingGlide : AppCompatActivity() {
         Glide.with(this)
 
 
-                .error(R.drawable.imagenotfound)
-                .listener(new RequestListener<String, GlideDrawable>() {
-                    @Override
-                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                        // log exception
-                        Log.e("TAG", "Error loading image", e);
-                        return false; // important to return false so the error placeholder can be placed
-                    }
-                    @Override
-                    public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                        return false;
-                    }
-                })
-
-
-
 
                 .load("https://s3.amazonaws.com/appsdeveloperblog/Micky.jpg")
                 .into(imageView)

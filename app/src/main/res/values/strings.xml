@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">PMF</string>
     <string name="MangaName">MangaName</string>
+    <string name="Button_send">button_send</string>
 </resources>

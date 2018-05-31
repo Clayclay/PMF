@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
 import android.widget.Toast
+import fr.parlonsmangafrancais.www.pmf.R.id.*
 
 
 import kotlinx.android.synthetic.main.activity_main.*
@@ -22,20 +23,9 @@ class MainActivity : AppCompatActivity() {
 
 
         // Instead of findViewById<TextView>(R.id.textView)
-        textView.setText("Hello,Marie!")
-
-//step 2
-        val manga1 = Manga("manga nom")
-        manga1.resume = "resume ici"
-        manga1.imageUrl
-        //manga1.dateFutur
-        manga1.note
+            textView.setText("Bienvenue")
 
 
-
-
-
-        mangaName.setText(manga1.name)
 
 //step 3 button test
 
@@ -53,6 +43,18 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        // button manga
+
+
+        button_manga.setOnClickListener {
+
+
+            val intent = Intent( this ,ActivityManga::class.java)
+            startActivity(intent);
+
+
+
+        }
 
     }
 

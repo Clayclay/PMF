@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import fr.parlonsmangafrancais.www.pmf.R.layout.manga
+
 
 
 class ActivityManga : AppCompatActivity() {
@@ -25,19 +25,15 @@ class ActivityManga : AppCompatActivity() {
     private class ListExampleAdapter(context: Context) : BaseAdapter() {
 
 
-       // fun getMangaInfo() = {
 
-         //   val manga = Manga("Epic Games", 1)
-           // val (name, id) = manga
-
-          //  println(manga.name)
-           // println(manga.id)
-          //  println(manga.toString())
-      //  }
-
-            var sList = arrayListOf<String>(println(manga.name))
+            val manga= Manga( "Epic Games",1)
+            val manga2 = Manga("hehe",2)
 
 
+        val name= manga.name
+
+
+           var sList = arrayListOf<String>(name)
 
 
             private val mInflator: LayoutInflater

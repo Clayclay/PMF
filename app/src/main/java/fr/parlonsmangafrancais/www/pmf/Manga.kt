@@ -26,20 +26,21 @@ fun main(args: Array<String>) {
 
 
 
-    fun getMangaInfo() = {
 
-        val manga = Manga("Epic Games", 1)
         val (name, id) = manga
 
         println(manga.name)
         println(manga.id)
         println(manga.toString())
 
-      //  var sList = arrayListOf<String>(manga.name)
+    println(manga.component1())    //Will return name.
+    println(manga.component2())    //Will return 1
+
+
+val mangas = listOf<Manga>(manga,manga2)
+    for ((name,id)in mangas){
+        println("${name} a une id de ${id}")
     }
-
-
-
 
 }
 

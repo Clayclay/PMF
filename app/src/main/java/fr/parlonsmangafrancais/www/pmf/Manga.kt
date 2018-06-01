@@ -5,7 +5,12 @@ import java.util.*
 
 data class Manga  (val name : String = "", val id: Int =0 ) {
 
+
 }
+
+
+
+
 
   //  data class VideoGame(val name: String, val publisher: String, var reviewScore: Int)
    // val game: VideoGame = VideoGame("Gears of War", "Epic Games", 8)

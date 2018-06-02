@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.*
 
 
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 class ActivityManga : AppCompatActivity() {
 
@@ -19,21 +21,20 @@ class ActivityManga : AppCompatActivity() {
         setContentView(R.layout.list_manga)
 
         val lv = findViewById(R.id.manga_list_view) as ListView
-        lv.adapter = ListExampleAdapter(this)
+
+       lv.adapter = ListExampleAdapter(this)
     }
 
     private class ListExampleAdapter(context: Context) : BaseAdapter() {
 
 
 
-            val manga= Manga( "Epic Games",1)
+          val manga= Manga( "Epic Games",1)
             val manga2 = Manga("hehe",2)
 
 
-        val name= manga.name
 
-
-           var sList = arrayListOf<String>(name)
+           var sList = arrayListOf<String>(manga.name, manga2.name)
 
 
             private val mInflator: LayoutInflater
@@ -46,16 +47,15 @@ class ActivityManga : AppCompatActivity() {
                 return sList.size
             }
 
-            override fun getItem(position: Int): Any {
-                return sList[position]
-
-            }
+           override fun getItem(position: Int): Any {
+               return sList[position]
+           }
 
             override fun getItemId(position: Int): Long {
                 return position.toLong()
             }
 
-            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
+          override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
                 val view: View?
                 val vh: ListRowHolder
                 if (convertView == null) {
@@ -65,7 +65,7 @@ class ActivityManga : AppCompatActivity() {
                 } else {
                     view = convertView
                     vh = view.tag as ListRowHolder
-                }
+               }
 
 
                 vh.label.text = sList[position]
@@ -73,18 +73,22 @@ class ActivityManga : AppCompatActivity() {
 
 
 
-                return view
-            }
+              return view
+          }
         }
 
         private class ListRowHolder(row: View?) {
             public val label: TextView
 
             init {
-                this.label = row?.findViewById(R.id.MangaLabelName) as TextView
+
+
+
+
+                this.label = row?.findViewById(R.id.manganame) as TextView
             }
         }
-    }
+}
 
 
 

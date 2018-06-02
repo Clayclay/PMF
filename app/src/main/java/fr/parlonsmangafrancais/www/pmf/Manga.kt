@@ -6,6 +6,8 @@ import java.util.*
 data class Manga  (val name : String = "", val id: Int =0 ) {
 
 
+
+
 }
 
 
@@ -25,12 +27,12 @@ data class Manga  (val name : String = "", val id: Int =0 ) {
 
 fun main(args: Array<String>) {
 
+
+
+
     val manga= Manga( "Epic Games",1)
 
     val manga2 = Manga("hehe",2)
-
-
-
 
         val (name, id) = manga
 

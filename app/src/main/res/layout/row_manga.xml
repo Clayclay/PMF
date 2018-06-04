@@ -1,48 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
 >
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:orientation="vertical"
-    android:padding="5dp">
 
-    <!-- TextView Manga Name -->
-    <TextView
-        android:id="@+id/manganame"
+
+
+    <android.support.v7.widget.GridLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
 
-    <!-- TextView Employee Email
-    <TextView
-        android:id="@+id/txt_employee_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />-->
+        <LinearLayout
+            android:id="@+id/coverImage"
+            android:layout_width="187dp"
+            android:layout_height="148dp"
+            android:background="@color/colorAccent"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context="com.appsdeveloperblog.kotlinexample4.LoadGifFromURLUsingGlide">
 
-    <!-- TextView Employee Phone
-    <TextView
-        android:id="@+id/txt_employee_phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />-->
+        </LinearLayout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/coverImage"
-        android:layout_width="230dp"
-        android:layout_height="230dp"
-        android:layout_marginTop="112dp"
-        android:background="@color/colorAccent"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context="com.appsdeveloperblog.kotlinexample4.LoadGifFromURLUsingGlide" />
-
-</LinearLayout>
+        <TextView
+            android:id="@+id/manganame"
+            android:layout_width="86dp"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            tools:layout_editor_absoluteX="3dp"
+            tools:layout_editor_absoluteY="10dp" />
+    </android.support.v7.widget.GridLayout>
 
 </android.support.constraint.ConstraintLayout>

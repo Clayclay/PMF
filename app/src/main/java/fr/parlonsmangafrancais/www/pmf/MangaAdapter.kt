@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 
-private class ListExampleAdapter(context: Context) : BaseAdapter() {
+private class MangaAdapter(context: Context) : BaseAdapter() {
 
 
     var sList = arrayListOf<String>(    )
@@ -65,9 +65,6 @@ private class ListRowHolder(row: View?) {
     public val label: TextView
 
     init {
-
-
-
 
         this.label = row?.findViewById(R.id.manganame) as TextView
     }

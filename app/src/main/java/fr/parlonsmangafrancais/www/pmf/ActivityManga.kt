@@ -1,109 +1,96 @@
 package fr.parlonsmangafrancais.www.pmf
 
-
-import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.*
-import retrofit2.Call
-import retrofit2.Response
-import java.io.IOException
+
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 
 
 class ActivityManga : AppCompatActivity() {
 
+    val client by lazy {
+       GetDataService.create()
+    }
 
-    override fun onCreate(savedState: Bundle?) {
-        super.onCreate(savedState)
+    var disposable: Disposable? = null
+
+
+    /*  Le COMPAGNON OBJECT */
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.list_manga)
 
-        val lv = findViewById(R.id.manga_list_view) as ListView
 
 
+      /*  override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_main)*/
 
+            // Uncomment to show list of articles in Logcat
+            //showMangas()
 
+            // Uncomment to show article with id=1 in Logcat
+            //showManga(1)
 
-         class MangaAdapter(context: Context) : BaseAdapter() {
+            // Test post request and add new article
 
+            val mangatest = Manga( "Have fun posting", id = 1)
+        postManga(mangatest)
 
+            //postArticle(article)
 
-            // val call = GetDataService.requestid(mbid,id)
-
-
-           //  val dataList: ArrayList<Manga> = ArrayList<Manga>()
-
-             // var sList = arrayListOf<String>()
-
-
-
-             private val mInflator: LayoutInflater
-
-             init {
-                 this.mInflator = LayoutInflater.from(context)
-             }
-
-             override fun getCount(): Int {
-                // return sList.size
-                 return dataList.size
-             }
-
-             override fun getItem(position: Int): Any {
-               //  return sList[position]
-                 return dataList[position]
-             }
-
-             override fun getItemId(position: Int): Long {
-                 return position.toLong()
-             }
-
-             override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
-                 val view: View?
-                 val vh: ListRowHolder
-
-                 if (convertView == null) {
-                     view = this.mInflator.inflate(R.layout.row_manga, parent, false)
-                     vh = ListRowHolder(view)
-                     view.tag = vh
-                 } else {
-                     view = convertView
-                     vh = view.tag as ListRowHolder
-                 }
-
-
-                 //vh.label.text = sList[position]
-
-                 vh.label.text =
-
-
-                 // Picasso.Builder builder = new Picasso.Builder(context);
-                 //  builder.downloader(new OkHttp3Downloader(context));
-                 // builder.build().load(dataList.get(position).getThumbnailUrl())
-                 //   .placeholder((R.drawable.ic_launcher_background))
-                 //  .error(R.drawable.ic_launcher_background)
-                 //  .into(holder.coverImage);
-
-
-                 return view
-             }
-
-         }
-
-
-    }
-    class ListRowHolder(row: View?) {
-        public val label: TextView
-
-        init {
-
-
-            this.label = row?.findViewById(R.id.manganame) as TextView
         }
-    }
+
+        // GET List of Articles
+        private fun showMangas() {
+
+            disposable = client.getMangas()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(
+                            { result -> Log.v("MANGAS", "" + result) },
+                            { error -> Log.e("ERROR", error.message) }
+                    )
+
+        }
+
+        // GET Article by id
+        private fun showManga(id: Int) {
+
+            disposable = client.getManga(id)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(
+                            { result -> Log.v("ARTICLE ID ${id}: ", "" + result) },
+                            { error -> Log.e("ERROR", error.message) }
+                    )
+
+        }
+
+        // POST new Article
+        private fun postManga(manga: Manga) {
+
+            disposable = client.addManga(manga)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(
+                            { result -> Log.v("POSTED ARTICLE", "" + manga ) },
+                            { error -> Log.e("ERROR", error.message ) }
+                    )
+        }
+
+        override fun onPause() {
+            super.onPause()
+            disposable?.dispose()
+        }
+
 }
+
+
+
 
 
 

@@ -2,6 +2,20 @@ package fr.parlonsmangafrancais.www.pmf
 
 import android.media.Image
 import java.util.*
+import android.R.attr.name
+
+
+
+
+/* classe manga contient un recycler qui contient un adapter qui contient un viewholder
+ *
+  *
+  * viewholder est la vue unique,
+  * l'adapter c'est l'objet qui contient la vue unique et qui la duplique, et
+  *
+  * le recycler est le contenant général*/
+
+
 
 data class Manga  (
 
@@ -11,17 +25,17 @@ data class Manga  (
 
 )
 
-/*data class Info(var seed: String,
+
+
+/*  data class Info(var seed: String,
                 var results: Int,
                 var page: Int,
                 var version: String)
 
-data class Result(var gender: String,
+    data class Result(var gender: String,
                   var email: String,
                   var registered: String,
                   var dob: String,
                   var phone: String,
-                  var cell: String)
+                  var cell: String)               */
 
-
-                */

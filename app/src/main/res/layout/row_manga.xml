@@ -1,39 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-
-
-
-    <android.support.v7.widget.GridLayout
+    <TextView
+        android:id="@+id/manga_name"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:padding="20dp"/>
 
-        <LinearLayout
-            android:id="@+id/coverImage"
-            android:layout_width="187dp"
-            android:layout_height="148dp"
-            android:background="@color/colorAccent"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:context="com.appsdeveloperblog.kotlinexample4.LoadGifFromURLUsingGlide">
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/manganame"
-            android:layout_width="86dp"
-            android:layout_height="wrap_content"
-            android:text="Name"
-            tools:layout_editor_absoluteX="3dp"
-            tools:layout_editor_absoluteY="10dp" />
-    </android.support.v7.widget.GridLayout>
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

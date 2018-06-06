@@ -1,14 +1,8 @@
 package fr.parlonsmangafrancais.www.pmf
 
-import android.media.Image
-import java.util.*
-import android.R.attr.name
-
-
 
 
 /* classe manga contient un recycler qui contient un adapter qui contient un viewholder
- *
   *
   * viewholder est la vue unique,
   * l'adapter c'est l'objet qui contient la vue unique et qui la duplique, et

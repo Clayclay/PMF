@@ -1,15 +1,61 @@
 package fr.parlonsmangafrancais.www.pmf
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.manga_layout.view.*
 
-import kotlinx.android.synthetic.main.row_manga.view.*
 
-class MangaAdapter(val Mangas : ArrayList<String>, val context: Context) : RecyclerView.Adapter<ViewHolder>() {
+// L ADAPTATEUR POUR TRANSMETTRE DU JSON A MANGA.KT
+// adapter = objet qui contient vue unique et la duplique
+
+class MangaAdapter(
+
+        private val mangaList: List<Manga>,
+        private val listener: (Manga) -> Unit
+): RecyclerView.Adapter<MangaAdapter.MangaHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = MangaHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.manga_layout, parent, false))
+
+    override fun onBindViewHolder(holder: MangaHolder, position: Int) = holder.bind(mangaList[position], listener)
+
+    override fun getItemCount() = mangaList.size
+
+    class MangaHolder(mangaView: View): RecyclerView.ViewHolder(mangaView) {
+
+        fun bind(manga: Manga, listener: (Manga) -> Unit) = with(itemView) {
+            name.text = manga.name
+            // body.text = manga.body
+            setOnClickListener { listener(manga) }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+class MangaAdapter(
+        val Mangas : ArrayList<String>,
+        val context: Context
+) : RecyclerView.Adapter<ViewHolder>() {
 
     // Inflates the item views
     // attention au sens
@@ -36,7 +82,7 @@ class MangaAdapter(val Mangas : ArrayList<String>, val context: Context) : Recyc
 
 }
 
-class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
+//class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
     // Holds the TextView that will add each animal to
-    val MangaType = view.manga_name
-}
+    // val MangaType = view.manga_name}
+    */

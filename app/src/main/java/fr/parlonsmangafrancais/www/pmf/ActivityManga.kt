@@ -2,71 +2,54 @@ package fr.parlonsmangafrancais.www.pmf
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-
+import android.support.v7.widget.LinearLayoutManager
 
 
 import android.util.Log
+import fr.parlonsmangafrancais.www.pmf.R.id.mangas_recycler
+
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 
 
+
+import android.support.v7.widget.RecyclerView
+
+
+import kotlinx.android.synthetic.main.activity_manga.*
+
+
+
 class ActivityManga : AppCompatActivity() {
 
 
-
     val client by lazy {
-        GetDataService.create()
+        MangasApiClient.create()
     }
 
-    // variable jetable
     var disposable: Disposable? = null
 
- // Initializing an empty ArrayList to be filled with animals
- //val mangas: ArrayList<String> = ArrayList()
-
-
-    /*  Le COMPAGNON OBJECT */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.list_manga)
+        setContentView(R.layout.activity_manga)
 
 
-        // Loads animals into the ArrayList
-        //addMangas()
 
-     /*   val addManga = GetDataService.create()
-       val test =  addManga.getManga(2507)*/
+        // LE COMPAGNON OBJET ?!
+        // Uncomment to show list of articles in Logcat
+        //showArticles()
 
+        // Uncomment to show article with id=1 in Logcat
+        //showArticle(1)
 
         // Test post request and add new article
-        val manga = Manga (1 , "test")
-
+        showManga(1)
+        val manga = Manga(1, "Have fun posting", "Test Manga")
         postManga(manga)
 
-
-
-        /* You can use GridLayoutManager if you want multiple columns. Enter the number of columns as a parameter.
-        rv_list_manga.layoutManager = LinearLayoutManager(this)
-
-        // You can use GridLayoutManager if you want multiple columns. Enter the number of columns as a parameter.
-        //  rv_animal_list.layoutManager = GridLayoutManager(this, 2)
-
-
-        // Access the RecyclerView Adapter and load the data into it
-     rv_list_manga.adapter = MangaAdapter(mangas ,this)*/
-
     }
-
-
-
-
-
- /*fun addMangas() {     mangas.add("cat")
-     mangas.add("tiger") }*/
-
-
 
     // GET List of Articles
     private fun showMangas() {
@@ -75,7 +58,8 @@ class ActivityManga : AppCompatActivity() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        { result -> Log.v("Mangas", "" + result) },
+                        { result -> setupRecycler(result) },
+                      //  { result -> Log.v("MANGAS", "" + result) },
                         { error -> Log.e("ERROR", error.message) }
                 )
 
@@ -88,28 +72,42 @@ class ActivityManga : AppCompatActivity() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        { result -> Log.v("Manga ID ${id}: ", "" + result) },
+                        { result -> Log.v("MANGA ID ${id}: ", "" + result) },
                         { error -> Log.e("ERROR", error.message) }
                 )
 
     }
 
     // POST new Article
-    private fun postManga(Manga: Manga) {
+    private fun postManga(manga: Manga) {
 
-        disposable = client.addManga(Manga)
+        disposable = client.addManga(manga)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        { result -> Log.v("POSTED Manga", "" + Manga ) },
+                        { result -> Log.v("POSTEDMANGA", "" + manga ) },
                         { error -> Log.e("ERROR", error.message ) }
                 )
     }
+
+    // LE RECYCLER ( contenant general )POUR LA VUE
+
+    fun setupRecycler(mangaList: List<Manga>) {
+       mangas_recycler.setHasFixedSize(true)
+        val layoutManager = LinearLayoutManager(this)
+        layoutManager.orientation = LinearLayoutManager.VERTICAL
+        mangas_recycler.layoutManager = layoutManager
+       mangas_recycler.adapter = MangaAdapter(mangaList){
+            Log.v("Manga", it.id.toString())
+        }
+    }
+
 
     override fun onPause() {
         super.onPause()
         disposable?.dispose()
     }
+
 
 
 

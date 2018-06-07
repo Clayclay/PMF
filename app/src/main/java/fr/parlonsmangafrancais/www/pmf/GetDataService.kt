@@ -4,6 +4,8 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
 import io.reactivex.Observable
+import okhttp3.OkHttpClient
+import retrofit2.Call
 
 interface GetDataService {
     /* API CLIENT */
@@ -19,13 +21,14 @@ interface GetDataService {
 
     /* Add new article*/
     @Headers("Content-Type: application/json;charset=utf-8")
-    @POST("mangas")
+    @POST("mangas_api")
+
     fun addManga(@Body manga: Manga): Observable<Manga>
 
 
-
-
     companion object {
+
+
 
         fun create(): GetDataService {
 

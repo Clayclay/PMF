@@ -1,5 +1,6 @@
 package fr.parlonsmangafrancais.www.pmf
 
+import com.squareup.moshi.Json
 
 
 /* classe manga contient un recycler qui contient un adapter qui contient un viewholder
@@ -7,29 +8,25 @@ package fr.parlonsmangafrancais.www.pmf
   * viewholder est la vue unique,
   * l'adapter c'est l'objet qui contient la vue unique et qui la duplique, et
   *
-  * le recycler est le contenant général*/
+  * le recycler est le contenant général
+  *
+  *
+  *
+  * */
 
 
 
-data class Manga  (
+data class  Manga  (
 
-        val name : String = "",
+        @Json(name = "id") val id: Int,
 
-        val id: Int
+        @Json(name = "name") val name: String
 
 )
 
+data class Result (val items: List<Manga>)
 
 
-/*  data class Info(var seed: String,
-                var results: Int,
-                var page: Int,
-                var version: String)
 
-    data class Result(var gender: String,
-                  var email: String,
-                  var registered: String,
-                  var dob: String,
-                  var phone: String,
-                  var cell: String)               */
+
 

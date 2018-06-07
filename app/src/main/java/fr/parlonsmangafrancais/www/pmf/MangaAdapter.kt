@@ -22,7 +22,7 @@ class MangaAdapter(val Mangas : ArrayList<String>, val context: Context) : Recyc
     // Binds each manga in the ArrayList to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder?.MangaType?.text =Mangas.get(position)
+        holder.MangaType.text =Mangas.get(position)
     }
 
     // Gets the number of animals in the list

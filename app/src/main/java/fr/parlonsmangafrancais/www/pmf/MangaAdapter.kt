@@ -26,8 +26,10 @@ class MangaAdapter(
     class MangaHolder(mangaView: View): RecyclerView.ViewHolder(mangaView) {
 
         fun bind(manga: Manga, listener: (Manga) -> Unit) = with(itemView) {
+
             name.text = manga.name
-            // body.text = manga.body
+            status.text = manga.status
+
             setOnClickListener { listener(manga) }
         }
     }

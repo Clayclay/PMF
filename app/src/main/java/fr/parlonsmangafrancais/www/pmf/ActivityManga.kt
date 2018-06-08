@@ -38,21 +38,23 @@ class ActivityManga : AppCompatActivity() {
 
 
         // LE COMPAGNON OBJET ?!
+
+
         // Uncomment to show list of articles in Logcat
-        //showArticles()
+      showMangas()
 
         // Uncomment to show article with id=1 in Logcat
-        //showArticle(1)
-
-        // Test post request and add new article
         showManga(1)
+
+/*  // Test post request and add new article*/
+       showManga(1)
         val manga = Manga(1, "Have fun posting", "Test Manga")
         postManga(manga)
 
     }
 
     // GET List of Articles
-    private fun showMangas() {
+   private fun showMangas() {
 
         disposable = client.getMangas()
                 .subscribeOn(Schedulers.io())
@@ -79,7 +81,7 @@ class ActivityManga : AppCompatActivity() {
     }
 
     // POST new Article
-    private fun postManga(manga: Manga) {
+  private fun postManga(manga: Manga) {
 
         disposable = client.addManga(manga)
                 .subscribeOn(Schedulers.io())

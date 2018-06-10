@@ -12,11 +12,14 @@ import retrofit2.http.*
 interface MangasApiClient {
 
     // L API POUR RECUPERER LE JSON ET SES DONNEES
-
+//  l’interface Kotlin qui va contenir la déclaration de toutes les requêtes disponibles
 
     /* Get list of Mangas*/
     @GET("posts")
-    fun getMangas(): Observable<List<Manga>>
+    fun getMangas()
+            : Observable<List<Manga>>
+
+
 
     /* Get one Manga by it's id*/
     @GET("mangas_api/{id}")
@@ -33,7 +36,7 @@ interface MangasApiClient {
 
     companion object {
 
-
+// nous allons créer une instance de client Retrofit.
         fun create(): MangasApiClient {
 
            val url = "https://www.parlonsmangafrancais.fr/wp-json/wp/v2/"
@@ -46,7 +49,7 @@ interface MangasApiClient {
                     .baseUrl(url)
                     .build()
 
-
+//l’instance du service
             return retrofit.create(MangasApiClient::class.java)
 
         }

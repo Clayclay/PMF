@@ -4,17 +4,12 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 
-
 import android.util.Log
-import fr.parlonsmangafrancais.www.pmf.R.id.mangas_recycler
-
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-
-
-
+import fr.parlonsmangafrancais.www.pmf.R.id.mangas_recycler
 import android.support.v7.widget.RecyclerView
 
 
@@ -44,18 +39,18 @@ class ActivityManga : AppCompatActivity() {
       showMangas()
 
         // Uncomment to show article with id=1 in Logcat
-        showManga(1)
+      //  showManga(1)
 
 /*  // Test post request and add new article*/
-       showManga(1)
-        val manga = Manga(1, "Have fun posting", "Test Manga")
+     /*  showManga(1)
+        val manga = Manga(1, "Have fun posting")
         postManga(manga)
-
+        */
     }
 
     // GET List of Articles
    private fun showMangas() {
-
+//créer la requête GET :
         disposable = client.getMangas()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

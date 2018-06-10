@@ -15,19 +15,19 @@ interface MangasApiClient {
 //  l’interface Kotlin qui va contenir la déclaration de toutes les requêtes disponibles
 
     /* Get list of Mangas*/
-    @GET("posts")
+    @GET("mangas-api")
     fun getMangas()
             : Observable<List<Manga>>
 
 
 
     /* Get one Manga by it's id*/
-    @GET("mangas_api/{id}")
+    @GET("mangas-api/{id}")
     fun getManga(@Path("id") id: Int): Observable<Manga>
 
     /* Add new Manga*/
     @Headers("Content-Type: application/json;charset=utf-8")
-    @POST("mangas_api")
+    @POST("mangas-api")
     fun addManga(@Body manga: Manga): Observable<Manga>
 
 

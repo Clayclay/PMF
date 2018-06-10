@@ -40,7 +40,7 @@ class MangaAdapter(
             status.text = manga.status
 
 
-           title.text =  Title.rendered
+           title.text =  manga.slug
 
 
             setOnClickListener { listener(manga) }

@@ -11,12 +11,20 @@ import com.squareup.moshi.Json
 data class  Manga  (
 
         val id: Long? ,
-        val slug: String? = null,
         val status: String? = null,
         val type: String? = null,
+
+        //
+
+        val slug: String? = null,
         val title: Title? = null,
+
         @Json(name = "categories_api")
-        val categoriesAPI: List<Long> ,
+        val categoriesAPI: List<Long>,
+
+
+
+
 
         @Json(name = "styles_api")
         val stylesAPI: List<Long> ,
@@ -28,9 +36,46 @@ data class  Manga  (
         val nbtomeAPI: List<Long>,
 
         @Json(name = "Meta_api")
-        val metaAPI: Map<String, List<String>>
-)
+        val metaAPI: Map<String, List<String>>? = null
+) {
 
+
+
+  /*  public fun toJson() = klaxon.toJsonString(this)
+
+
+
+    companion object {
+        public fun fromJson(json: String) = klaxon.parse<Welcome>(json)
+    }*/
+
+}
 data class Title (
         val rendered: String
 )
+
+/*data class metaAPI (
+        @Json(name = "wpcf-statut")
+        val status: String? = null,
+
+        @Json(name = "wpcf-date-de-sortie")
+        val dateSortie: String? = null,
+
+        @Json(name = "wpcf-resume")
+        val resume: String? = null
+
+         @Json(name = "wpcf-image-principale")
+        val imgURL: String? = null
+
+
+)
+class MetaAPI(elements: Map<String, List<String>>) : HashMap<String, List<String>>(elements) {
+    public fun toJson() = klawon.toJsonString(this)
+
+    companion object {
+        public fun fromJson(json: String) = MetaAPI (
+                klaxon.parseJsonObject(java.io.StringReader(json)) as Map<String, List<String>>
+        )
+    }
+}
+*/

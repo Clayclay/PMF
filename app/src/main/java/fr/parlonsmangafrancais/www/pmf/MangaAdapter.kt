@@ -17,35 +17,54 @@ class MangaAdapter(
         private val listener: (Manga) -> Unit
 
 
+
+
+
 ): RecyclerView.Adapter<MangaAdapter.MangaHolder>() {
+
+
 
     // method call when the presenter view is created
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = MangaHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.manga_layout, parent, false))
 
     // Pour les datas
+
+
     override fun onBindViewHolder(holder: MangaHolder, position: Int) = holder.bind(mangaList[position], listener)
+
+
 
     //Pour la taille
     override fun getItemCount() = mangaList.size
 
+
     // Quoi afficher / The ViewHolder of the adapter
+
+
+
 
     class MangaHolder(mangaView: View): RecyclerView.ViewHolder(mangaView) {
 
         fun bind(manga: Manga,  listener: (Manga) -> Unit) = with(itemView) {
 
-// Vue = champ / Binds a post into the view
-
-            status.text = manga.status
+// Vue = champ / Binds a post into the view  ex : slug.text = manga.slug
 
 
-           title.text =  manga.slug
+
+            title.text = manga.title?.rendered
+
+
+
+
+
+            //categories.text = manga.categoriesAPI
+           // styles.text = manga.stylesAPI
+           // editeurs.text = manga.editeursMangasAPI
+           // nbtome.text = manga.nbtomeAPI
 
 
             setOnClickListener { listener(manga) }
-
-
 
         }
     }

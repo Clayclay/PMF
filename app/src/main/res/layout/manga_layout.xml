@@ -10,31 +10,85 @@
     android:layout_margin="5dp">
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="479dp"
         android:layout_height="match_parent"
         android:padding="16dp">
 
-
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/imgLayout"
+            android:layout_width="174dp"
+            android:layout_height="183dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorAccent"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context="com.appsdeveloperblog.kotlinexample4.LoadGifFromURLUsingGlide" />
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="match_parent"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="179dp"
+            android:layout_marginStart="17dp"
+            android:layout_toRightOf="@+id/imgLayout"
+            android:layout_toEndOf="@+id/imgLayout"
+            android:gravity="center_vertical"
             android:text="Name"
             android:textColor="@color/cardview_dark_background"
-            android:gravity="center_vertical"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+             />
+
+
 
         <TextView
-            android:id="@+id/status"
-            android:text="Content"
-            android:layout_width="match_parent"
+            android:id="@+id/categories"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/title"
-            android:layout_alignParentLeft="true" />
+            android:layout_marginLeft="179dp"
+            android:layout_marginStart="180dp"
+            android:text="categories" />
 
+        <TextView
+            android:id="@+id/styles"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/categories"
+            android:layout_marginLeft="179dp"
+            android:layout_marginStart="180dp"
+            android:text="styles" />
+
+        <TextView
+            android:id="@+id/editeurs"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/styles"
+            android:layout_marginLeft="179dp"
+            android:layout_marginStart="180dp"
+            android:text="editeurs" />
+
+        <TextView
+            android:id="@+id/nbtome"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/editeurs"
+            android:layout_marginLeft="179dp"
+            android:layout_marginStart="180dp"
+            android:text="nbtome" />
 
 
     </RelativeLayout>

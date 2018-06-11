@@ -36,8 +36,10 @@ interface MangasApiClient {
     // Recuperer les termes nb_tomes
 
     @GET("nbtome-api")
-    fun getTomes()
-            : Observable<List<Tome>>
+    fun getTomes(
+    ): Observable<List<Tome>>
+
+
 
 
 

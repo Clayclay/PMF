@@ -28,9 +28,6 @@ data class  Manga  (
         val categoriesAPI: List<Long>,
 
 
-
-
-
         @Json(name = "styles_api")
         val stylesAPI: List<Long> ,
 
@@ -42,30 +39,16 @@ data class  Manga  (
 
         @Json(name = "Meta_api")
         val metaAPI: Map<String, List<String>>? = null
-) {
+) {}
 
 
-
-  /*  public fun toJson() = klaxon.toJsonString(this)
-
-
-
-    companion object {
-        public fun fromJson(json: String) = klaxon.parse<Welcome>(json)
-    }*/
-
-}
 data class Title (
         val rendered: String
 )
 
 
 
-data class Tome (
-        val id: Long,
-        val count: Long,
-        val name: String
-)
+
 
 
 

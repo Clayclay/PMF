@@ -10,7 +10,6 @@ import kotlinx.android.synthetic.main.manga_layout.view.*
 import android.widget.ArrayAdapter
 
 
-
 // L ADAPTATEUR POUR TRANSMETTRE DU JSON A MANGA.KT
 // adapter = objet qui contient vue unique et la duplique
 
@@ -18,6 +17,8 @@ class MangaAdapter(
 
         private val mangaList: List<Manga>,
         private val listener: (Manga) -> Unit
+
+      //  ,  private val tomeList: List<Tome>
 
 
 ): RecyclerView.Adapter<MangaAdapter.MangaHolder>() {
@@ -94,12 +95,12 @@ class MangaAdapter(
 
             var tomenbr = manga.nbtomeAPI.component1().toInt()
 
-            if( tomenbr === manga.tome?.id?.toInt())
-
+            if( tomenbr === Tome.id.toInt())
+            {
 
                 println(tomenbr)
-                println( manga.tome?.name)
-
+                println( Tome.name)
+        }
 
 
 

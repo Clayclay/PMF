@@ -46,12 +46,15 @@ class ActivityManga : AppCompatActivity() {
         val manga = Manga(1, "Have fun posting")
         postManga(manga)
         */
+
+
+
     }
 
     // GET List of Articles
    private fun showMangas() {
 //créer la requête GET :
-        disposable = client.getMangas()
+        disposable = client.getMangas( )
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -99,6 +102,16 @@ class ActivityManga : AppCompatActivity() {
             Log.v("Manga", it.id.toString())
         }
     }
+
+
+
+
+
+
+
+
+
+
 
 
     override fun onPause() {

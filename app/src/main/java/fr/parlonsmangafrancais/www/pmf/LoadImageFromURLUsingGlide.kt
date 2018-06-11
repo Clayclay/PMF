@@ -21,8 +21,6 @@ class LoadImageFromURLUsingGlide : AppCompatActivity() {
         val imageView = ImageView(this)
         Glide.with(this)
 
-
-
                 .load("https://s3.amazonaws.com/appsdeveloperblog/Micky.jpg")
                 .into(imageView)
         linearLayout.addView(imageView)

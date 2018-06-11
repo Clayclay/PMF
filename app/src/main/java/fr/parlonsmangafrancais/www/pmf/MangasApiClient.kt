@@ -31,6 +31,13 @@ interface MangasApiClient {
     fun addManga(@Body manga: Manga): Observable<Manga>
 
 
+/* Deuxieme Partie*/
+
+    // Recuperer les termes nb_tomes
+
+    @GET("nbtome-api")
+    fun getTomes()
+            : Observable<List<Tome>>
 
 
 

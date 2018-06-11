@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.manga_image.view.*
 import kotlinx.android.synthetic.main.manga_layout.view.*
+import android.widget.ArrayAdapter
+
 
 
 // L ADAPTATEUR POUR TRANSMETTRE DU JSON A MANGA.KT
@@ -17,10 +20,10 @@ class MangaAdapter(
         private val listener: (Manga) -> Unit
 
 
-
-
-
 ): RecyclerView.Adapter<MangaAdapter.MangaHolder>() {
+
+
+
 
 
 
@@ -31,7 +34,7 @@ class MangaAdapter(
     // Pour les datas
 
 
-    override fun onBindViewHolder(holder: MangaHolder, position: Int) = holder.bind(mangaList[position], listener)
+    override fun onBindViewHolder(holder: MangaHolder, position: Int) = holder.bind(mangaList[position], listener    )
 
 
 
@@ -46,7 +49,8 @@ class MangaAdapter(
 
     class MangaHolder(mangaView: View): RecyclerView.ViewHolder(mangaView) {
 
-        fun bind(manga: Manga,  listener: (Manga) -> Unit) = with(itemView) {
+        fun bind(
+                manga: Manga,  listener: (Manga) -> Unit) = with(itemView) {
 
 // Vue = champ / Binds a post into the view  ex : slug.text = manga.slug
 
@@ -56,12 +60,47 @@ class MangaAdapter(
 
 
 
+            categories.text = manga.categoriesAPI.toString()
 
 
-            //categories.text = manga.categoriesAPI
-           // styles.text = manga.stylesAPI
-           // editeurs.text = manga.editeursMangasAPI
-           // nbtome.text = manga.nbtomeAPI
+
+
+           // styles.text = manga.stylesAPI?.toString()
+
+
+
+            styles.text = manga.stylesAPI.component1().toString()
+
+
+/*
+
+            manga.stylesAPI.forEach {
+
+                println(it)
+            }*/
+
+
+
+            editeurs.text = manga.editeursMangasAPI.toString()
+
+
+
+/* Afficher le nom correspondant
+        nbtome.text = manga.nbtomeAPI.component1().toString()*/
+
+
+            println( manga.nbtomeAPI.component1().toString())
+
+
+            var tomenbr = manga.nbtomeAPI.component1().toInt()
+
+            if( tomenbr === manga.tome?.id?.toInt())
+
+
+                println(tomenbr)
+                println( manga.tome?.name)
+
+
 
 
             setOnClickListener { listener(manga) }

@@ -68,6 +68,11 @@
             android:layout_marginStart="180dp"
             android:text="styles" />
 
+        <ListView
+            android:id="@+id/styles2"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
         <TextView
             android:id="@+id/editeurs"
             android:layout_width="280dp"

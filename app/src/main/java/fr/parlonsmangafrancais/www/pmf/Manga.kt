@@ -19,6 +19,11 @@ data class  Manga  (
         val slug: String? = null,
         val title: Title? = null,
 
+
+
+        val tome: Tome? = null,
+
+
         @Json(name = "categories_api")
         val categoriesAPI: List<Long>,
 
@@ -53,6 +58,16 @@ data class  Manga  (
 data class Title (
         val rendered: String
 )
+
+
+
+data class Tome (
+        val id: Long,
+        val count: Long,
+        val name: String
+)
+
+
 
 /*data class metaAPI (
         @Json(name = "wpcf-statut")

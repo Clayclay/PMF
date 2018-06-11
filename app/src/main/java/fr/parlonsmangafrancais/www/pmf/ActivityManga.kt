@@ -94,7 +94,8 @@ class ActivityManga : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         mangas_recycler.layoutManager = layoutManager
-       mangas_recycler.adapter = MangaAdapter(mangaList){
+
+       mangas_recycler.adapter = MangaAdapter(mangaList  ){
             Log.v("Manga", it.id.toString())
         }
     }

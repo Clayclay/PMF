@@ -9,9 +9,7 @@ import android.widget.ImageView
 
 import com.bumptech.glide.Glide
 
-
 import kotlinx.android.synthetic.main.manga_layout.view.*
-import java.net.URL
 
 
 // L ADAPTATEUR POUR TRANSMETTRE DU JSON A MANGA.KT
@@ -40,9 +38,6 @@ class MangaAdapter(
     override fun getItemCount() = mangaList.size
 
 
-
-
-
     // Quoi afficher / The ViewHolder of the adapter
 
     class MangaHolder(mangaView: View): RecyclerView.ViewHolder(mangaView) {
@@ -50,8 +45,26 @@ class MangaAdapter(
         fun bind(   manga: Manga,    listener: (Manga) -> Unit) = with(itemView)
           {
 
-// Vue = champ / Binds a post into the view  ex : slug.text = manga.slug
-            title.text = manga.title?.rendered
+              ////////////////* Afficher L'image du Manga *////////////////////////////
+
+              val imageView = findViewById(R.id.imageMangaView) as ImageView
+              val imgURL =  manga.metaAPI["wpcf-image-principale"]?.component1().toString()
+
+              Glide.with(this)
+                      .load(imgURL )
+                      .into(imageView)
+
+              ////////////////* FIN -- Afficher L'image du Manga */////////////////////
+
+              // View = champ   ex : slug.text = manga.slug / Binds a post into the view
+
+              title.text = manga.title?.rendered
+
+
+             // to do wpcf-date-de-sortie
+
+
+
             categories.text = manga.categoriesAPI.toString()
             // styles.text = manga.stylesAPI?.toString()
             styles.text = manga.stylesAPI.component1().toString()
@@ -77,16 +90,7 @@ class MangaAdapter(
         }*/
 
 
-////////////////* Afficher L'image du Manga *////////////////////////////
 
-              val imageView = findViewById(R.id.imageMangaView) as ImageView
-              val imgURL =  manga.metaAPI["wpcf-image-principale"]?.component1().toString()
-
-                Glide.with(this)
-                      .load(imgURL )
-                      .into(imageView)
-
-////////////////* FIN -- Afficher L'image du Manga */////////////////////
 
             setOnClickListener { listener(manga) }
 

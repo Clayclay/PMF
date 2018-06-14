@@ -27,21 +27,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-//step 3 button test
 
-
-        button1.setOnClickListener {
-
-
-            Toast.makeText(this@MainActivity, "You clicked me.", Toast.LENGTH_SHORT).show()
-
-
-            val intent = Intent( this ,LoadImageFromURLUsingGlide::class.java)
-            startActivity(intent);
-
-
-
-        }
 
         // button manga
 

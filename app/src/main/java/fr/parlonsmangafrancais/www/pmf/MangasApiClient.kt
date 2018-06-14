@@ -53,6 +53,7 @@ interface MangasApiClient {
 
 
             val retrofit = Retrofit.Builder()
+
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(MoshiConverterFactory.create())
                     .baseUrl(url)

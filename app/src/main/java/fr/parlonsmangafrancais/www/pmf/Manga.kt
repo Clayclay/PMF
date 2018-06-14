@@ -5,6 +5,7 @@ import com.squareup.moshi.Json
 
 
 
+
 // MANGA.KT = ADAPTER ( contient et duplique vue ) + VIEWHOLDER (vue )
 
 
@@ -18,8 +19,6 @@ data class  Manga  (
 
         val slug: String? = null,
         val title: Title? = null,
-
-
 
         val tome: Tome? = null,
 
@@ -38,7 +37,8 @@ data class  Manga  (
         val nbtomeAPI: List<Long>,
 
         @Json(name = "Meta_api")
-        val metaAPI: Map<String, List<String>>? = null
+        val metaAPI: Map<String, List<String>>
+
 ) {}
 
 
@@ -46,34 +46,3 @@ data class Title (
         val rendered: String
 )
 
-
-
-
-
-
-
-/*data class metaAPI (
-        @Json(name = "wpcf-statut")
-        val status: String? = null,
-
-        @Json(name = "wpcf-date-de-sortie")
-        val dateSortie: String? = null,
-
-        @Json(name = "wpcf-resume")
-        val resume: String? = null
-
-         @Json(name = "wpcf-image-principale")
-        val imgURL: String? = null
-
-
-)
-class MetaAPI(elements: Map<String, List<String>>) : HashMap<String, List<String>>(elements) {
-    public fun toJson() = klawon.toJsonString(this)
-
-    companion object {
-        public fun fromJson(json: String) = MetaAPI (
-                klaxon.parseJsonObject(java.io.StringReader(json)) as Map<String, List<String>>
-        )
-    }
-}
-*/

@@ -46,6 +46,8 @@
                                   </option>
                                   <option name="values">
                                     <map>
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="f3f3f3" />
                                       <entry key="foregroundImage" value="C:\Users\polmo\OneDrive\Documents\Tempo\PMF\facebookmangafrancaiscentre.png" />
                                     </map>
                                   </option>
@@ -60,6 +62,11 @@
                 </map>
               </option>
             </PersistentState>
+          </value>
+        </entry>
+        <entry key="vectorWizard">
+          <value>
+            <PersistentState />
           </value>
         </entry>
       </map>

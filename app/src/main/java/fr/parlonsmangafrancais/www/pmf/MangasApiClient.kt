@@ -8,7 +8,6 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
 
 
-
 interface MangasApiClient {
 
     // L API POUR RECUPERER LE JSON ET SES DONNEES
@@ -35,12 +34,8 @@ interface MangasApiClient {
 
     // Recuperer les termes nb_tomes
 
-    @GET("nbtome-api")
-    fun getTomes(
-    ): Observable<List<Tome>>
-
-
-
+    @GET("nbtome_api")
+          fun getTomes( ): Observable<List<Tome>>
 
 
     companion object {
@@ -49,8 +44,6 @@ interface MangasApiClient {
         fun create(): MangasApiClient {
 
            val url = "https://www.parlonsmangafrancais.fr/wp-json/wp/v2/"
-
-
 
             val retrofit = Retrofit.Builder()
 

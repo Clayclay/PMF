@@ -12,6 +12,7 @@
         android:layout_height="26dp"
         android:layout_marginTop="16dp"
         android:text="Bienvenue"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,8 +29,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="303dp"
-        android:layout_height="275dp"
+        android:layout_width="372dp"
+        android:layout_height="332dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

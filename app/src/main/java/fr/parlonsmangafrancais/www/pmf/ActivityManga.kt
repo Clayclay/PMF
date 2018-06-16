@@ -5,14 +5,14 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 
 import android.util.Log
-import fr.parlonsmangafrancais.www.pmf.R.id.mangas_recycler
+
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 
 import kotlinx.android.synthetic.main.activity_manga.*
-
+import kotlinx.android.synthetic.main.manga_layout.*
 
 
 class ActivityManga : AppCompatActivity() {
@@ -31,17 +31,15 @@ class ActivityManga : AppCompatActivity() {
         // LE COMPAGNON OBJET ?!
 
         // Uncomment to show list of articles in Logcat
-      showMangas()
+        showMangas()
 
-        // Uncomment to show article with id=1 in Logcat
-      //  showManga(1)
+        showTomes()
 
         /*  // Test post request and add new article*/
         /*  showManga(1)
              val manga = Manga(1, "Have fun posting")
              postManga(manga)
         */
-
 
 
     }
@@ -55,12 +53,21 @@ class ActivityManga : AppCompatActivity() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         { result -> setupRecycler(result) },
-                      //  { result -> Log.v("MANGAS", "" + result) },
                         { error -> Log.e("ERROR", error.message) }
                 )
 
     }
+    // GET List of Tomes
 
+    private fun showTomes() {
+ disposable= client.getTomes()
+         .subscribeOn(Schedulers.io())
+         .observeOn(AndroidSchedulers.mainThread())
+         .subscribe(
+                //{ result -> Log.v("TOMES", "" + result ) }
+                { result -> setupRecyclerTome(result ) }
+         )
+    }
 
 
     // GET Article by id
@@ -77,7 +84,7 @@ class ActivityManga : AppCompatActivity() {
     }
 
     // POST new Article
-  private fun postManga(manga: Manga) {
+ /* private fun postManga(manga: Manga) {
 
         disposable = client.addManga(manga)
                 .subscribeOn(Schedulers.io())
@@ -86,57 +93,56 @@ class ActivityManga : AppCompatActivity() {
                         { result -> Log.v("POSTEDMANGA", "" + manga ) },
                         { error -> Log.e("ERROR", error.message ) }
                 )
-    }
+    }*/
 
 
-    // GET List of Tomes
-    private fun showTomes() {
-//créer la requête GET :
-        disposable = client.getTomes( )
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                     // { result -> setupRecycler(result) },
-                         { result -> Log.v("TOMES", "" +result) },
-                        { error -> Log.e("ERROR", error.message) }
-                )
-
-    }
 
 
     // LE RECYCLER ( contenant general )POUR LA VUE
 
-    fun setupRecycler(mangaList: List<Manga>    ) {
+    fun setupRecycler( mangaList: List<Manga>  ) {
         mangas_recycler.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         mangas_recycler.layoutManager = layoutManager
-       mangas_recycler.adapter = MangaAdapter(mangaList   ){
-            Log.v("Manga", it.toString())
 
-        }
+       mangas_recycler.adapter = MangaAdapter(mangaList   ){
+            Log.v("Manga", it.toString())        }
     }
 
+
+        fun setupRecyclerTome( tomeList: List<Tome>  ) {
+
+            tomes_Recycler.setLayoutManager(mangas_recycler.layoutManager);
+            tomes_Recycler.setHasFixedSize(true)
+            val layoutManager = LinearLayoutManager(this)
+            layoutManager.orientation = LinearLayoutManager.VERTICAL
+            tomes_Recycler.layoutManager = layoutManager
+
+            tomes_Recycler.adapter = TomeAdapter(tomeList   ){
+                Log.v("Tome", it.toString())            }
+        }
 
     override fun onPause() {
         super.onPause()
         disposable?.dispose()
     }
 
+
+
+
+
+
+
+
+
+
+
+
+// important
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

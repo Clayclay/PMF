@@ -14,80 +14,88 @@
     <RelativeLayout
         android:layout_width="479dp"
         android:layout_height="match_parent"
-        android:layout_marginBottom="5dp"
-        android:padding="16dp">
+        android:padding="8dp">
 
         <ImageView
             android:id="@+id/imageMangaView"
             android:layout_width="164dp"
             android:layout_height="200dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             card_view:srcCompat="@color/colorAccent" />
 
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="150dp"
+            android:layout_width="185dp"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/styles"
+            android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/imageMangaView"
-            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="109dp"
             android:gravity="center_vertical"
             android:text="Name"
             android:textColor="@color/cardview_dark_background"
-            android:textSize="20sp" />
+            android:textSize="25sp" />
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/title"
+            android:layout_below="@+id/title"
+            android:text="Date prochaine sortie "
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/datefutur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/title"
+            android:layout_below="@+id/textView2"
+            android:text="Date Sortie" />
 
         <TextView
             android:id="@+id/categories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/title"
-            android:layout_below="@+id/title"
-            android:layout_marginBottom="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="107dp"
             android:text="categories" />
 
         <TextView
             android:id="@+id/styles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_alignStart="@+id/categories"
             android:layout_below="@+id/categories"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="179dp"
-            android:layout_marginStart="180dp"
             android:text="styles" />
-
-        <ListView
-            android:id="@+id/styles2"
-            android:layout_width="100dp"
-            android:layout_height="82dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
 
         <TextView
             android:id="@+id/editeurs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_alignStart="@+id/categories"
             android:layout_below="@+id/styles"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="179dp"
-            android:layout_marginStart="180dp"
             android:text="editeurs" />
 
         <TextView
             android:id="@+id/nbtome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/editeurs"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="179dp"
-            android:layout_marginStart="180dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/styles"
+            android:layout_marginTop="165dp"
             android:text="nbtome" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/tomes_Recycler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
 
 
     </RelativeLayout>

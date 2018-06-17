@@ -77,10 +77,11 @@ class MangaAdapter(        private val mangaList: List<Manga>,        private va
                // println(manga.stylesAPI)
 
                 println(manga.nbtomeAPI.toString())
+                println(manga.tome?.name)
 
                 nbtome.text = manga.nbtomeAPI.toString()
 
-
+                tomename.text = manga.tome?.name
 
                 setOnClickListener { listener(manga) }
 

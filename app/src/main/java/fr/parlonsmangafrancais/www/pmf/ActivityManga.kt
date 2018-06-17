@@ -33,7 +33,7 @@ class ActivityManga : AppCompatActivity() {
         // Uncomment to show list of articles in Logcat
         showMangas()
 
-        showTomes()
+
 
         /*  // Test post request and add new article*/
         /*  showManga(1)
@@ -59,15 +59,17 @@ class ActivityManga : AppCompatActivity() {
     }
     // GET List of Tomes
 
-    private fun showTomes() {
+   /* private fun showTomes() {
  disposable= client.getTomes()
          .subscribeOn(Schedulers.io())
          .observeOn(AndroidSchedulers.mainThread())
          .subscribe(
                 //{ result -> Log.v("TOMES", "" + result ) }
-                { result -> setupRecyclerTome(result ) }
+                { result -> setupRecycler(result ) }
          )
-    }
+    }*/
+
+
 
 
     // GET Article by id
@@ -111,17 +113,7 @@ class ActivityManga : AppCompatActivity() {
     }
 
 
-        fun setupRecyclerTome( tomeList: List<Tome>  ) {
 
-            tomes_Recycler.setLayoutManager(mangas_recycler.layoutManager);
-            tomes_Recycler.setHasFixedSize(true)
-            val layoutManager = LinearLayoutManager(this)
-            layoutManager.orientation = LinearLayoutManager.VERTICAL
-            tomes_Recycler.layoutManager = layoutManager
-
-            tomes_Recycler.adapter = TomeAdapter(tomeList   ){
-                Log.v("Tome", it.toString())            }
-        }
 
     override fun onPause() {
         super.onPause()

@@ -44,6 +44,7 @@ class TomeAdapter(        private val tomeList: List<Tome>,        private val l
 
           tome_list_id.text = tome.id.toString()
 
+            tome_list_name.text = tome.name
 
 
             setOnClickListener { listener(tome) }

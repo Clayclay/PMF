@@ -89,6 +89,13 @@
             android:layout_marginTop="165dp"
             android:text="nbtome" />
 
+        <TextView
+            android:id="@+id/tomename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editeurs"
+            android:layout_toEndOf="@+id/editeurs"
+            android:text="tomename" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/tomes_Recycler"

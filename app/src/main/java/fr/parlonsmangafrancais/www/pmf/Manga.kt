@@ -16,7 +16,6 @@ data class  Manga  (
         val type: String? = null,
 
         val slug: String? = null,
-        val title: Title? = null,
 
         @Json(name = "categories_api")
         val categoriesAPI: List<Long>,
@@ -32,8 +31,11 @@ data class  Manga  (
         val nbtomeAPI: List<Long>,
 
         @Json(name = "Meta_api")
-        val metaAPI: Map<String, List<String>>
+        val metaAPI: Map<String, List<String>>,
 
+        val title: Title? = null,
+
+        val tome : Tome? = null
 
 
 )
@@ -43,3 +45,7 @@ data class Title (
         val rendered: String
 )
 
+data class Tome (
+        val id: Long,
+        val name: String
+)

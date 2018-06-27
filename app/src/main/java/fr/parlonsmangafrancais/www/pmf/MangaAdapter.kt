@@ -11,8 +11,10 @@ import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.ListView
+import com.beust.klaxon.JsonArray
 
 import com.bumptech.glide.Glide
+import io.reactivex.Observable
 
 import kotlinx.android.synthetic.main.manga_layout.view.*
 
@@ -32,15 +34,10 @@ class MangaAdapter(        private val mangaList: List<Manga>,        private va
 
     override fun onBindViewHolder(holder: MangaHolder, position: Int) = holder.bind(
             mangaList[position], listener
-
     )
 
     //Pour la taille
     override fun getItemCount() = mangaList.size
-
-
-
-
 
 
         // Quoi afficher / The ViewHolder of the adapter
@@ -51,10 +48,11 @@ class MangaAdapter(        private val mangaList: List<Manga>,        private va
             fun bind(manga: Manga, listener: (Manga) -> Unit) = with(itemView)
             {
 
+
                 ////////////////* Afficher L'image du Manga *////////////////////////////
 
                 val imageView = findViewById(R.id.imageMangaView) as ImageView
-                val imgURL = manga.metaAPI["wpcf-image-principale"]?.component1().toString()
+                val imgURL = manga.metaAPI!!["wpcf-image-principale"]!!.component1().toString()
 
                 Glide.with(this)
                         .load(imgURL)
@@ -75,13 +73,12 @@ class MangaAdapter(        private val mangaList: List<Manga>,        private va
                 styles.text = manga.stylesAPI.toString()
 
                // println(manga.stylesAPI)
-
-                println(manga.nbtomeAPI.toString())
-                println(manga.tome?.name)
+              //  println(manga.nbtomeAPI.toString())
+               // println(manga.tome?.name)
 
                 nbtome.text = manga.nbtomeAPI.toString()
 
-                tomename.text = manga.tome?.name
+               // tomename.text = manga.tome?.name
 
                 setOnClickListener { listener(manga) }
 

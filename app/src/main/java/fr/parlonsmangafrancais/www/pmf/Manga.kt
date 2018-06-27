@@ -1,9 +1,7 @@
 package fr.parlonsmangafrancais.www.pmf
 
-import android.media.Image
 import com.squareup.moshi.Json
-
-
+import java.util.*
 
 
 // MANGA.KT = ADAPTER ( contient et duplique vue ) + VIEWHOLDER (vue )
@@ -11,27 +9,27 @@ import com.squareup.moshi.Json
 
 data class  Manga  (
 
-        val id: Long? ,
+        val id: UUID ,
         val status: String? = null,
         val type: String? = null,
 
         val slug: String? = null,
 
         @Json(name = "categories_api")
-        val categoriesAPI: List<Long>,
+        val categoriesAPI: List<Long>?= null,
 
 
         @Json(name = "styles_api")
-        val stylesAPI: List<Long> ,
+        val stylesAPI: List<Long>?= null ,
 
         @Json(name = "editeurs_mangas_api")
-        val editeursMangasAPI: List<Long>,
+        val editeursMangasAPI: List<Long>?= null,
 
         @Json(name = "nbtome_api")
-        val nbtomeAPI: List<Long>,
+        val nbtomeAPI: List<Long>?= null,
 
         @Json(name = "Meta_api")
-        val metaAPI: Map<String, List<String>>,
+        val metaAPI: Map<String, List<String>>?= null,
 
         val title: Title? = null,
 
@@ -45,7 +43,13 @@ data class Title (
         val rendered: String
 )
 
-data class Tome (
+data class Tome  (
         val id: Long,
         val name: String
+
+
 )
+
+
+
+data class ExtendedManga(val manga : Manga , val tome: Tome)
